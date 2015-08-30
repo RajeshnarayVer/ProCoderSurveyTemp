@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<createSurveyReq>
+	<survey>
+		<surveyId>1</surveyId>
+		<name>SAN ANDREWS</name>
+		<address>
+			Texas
+		</address>
+		<room>
+			232
+		</room>
+		<type>
+			Hi-Caps
+		</type>
+		<by>
+			SMITH
+		</by>
+		<date>
+			21-01-2014
+		</date>
+		<remarks>Not enough network connection available</remarks>
+		<attachList></attachList>
+	</survey>
+	<survey>
+		<surveyId>2</surveyId>
+		<name>SMITH JOE</name>
+		<address>
+			NEW JERSY
+		</address>
+		<room>
+			73
+		</room>
+		<type>
+			Splitter
+		</type>
+		<by>
+			JOHN
+		</by>
+		<date>
+			06-03-2015
+		</date>
+		<remarks>No enough real estate </remarks>
+		<attachList></attachList>
+	</survey>
+	<survey>
+		<surveyId>3</surveyId>
+		<name>MIKE</name>
+		<address>
+			Spring Valley
+		</address>
+		<room>
+			7456
+		</room>
+		<type>
+			Cable
+		</type>
+		<by>
+			SMITH
+		</by>
+		<date>
+			16-06-2015
+		</date>
+		<remarks>Everything is perfect and cable can be laid</remarks>
+		<attachList></attachList>
+	</survey>
+</createSurveyReq>

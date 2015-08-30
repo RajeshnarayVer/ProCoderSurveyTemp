@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+.left{
+	height:700px;
+}
+.right{
+    float: right;
+    margin-top: -703px;
+    width: 81%;
+}
+input[type="file"]{
+	display:none;
+}
+.custom-upload{
+	border:1px solid #ccc;
+	display: inline-block;
+	padding:10px 20px;
+	cursor:pointer;
+}

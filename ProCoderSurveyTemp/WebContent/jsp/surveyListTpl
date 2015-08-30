@@ -1,0 +1,20 @@
+<script type="text/x-jquery-tmpl" id="jitdataTplDashboard">
+
+<div class="list-cmd each-timeentry" onclick="loadJITDetailSupv(this)">
+<div class="arw">
+    <div class="divTable">
+        <div class="row">
+        <div class="cell wid80">Created Date<br /><span class="normal noPadding">{{html requestedDt}}</span></div>
+		<div class="cell wid80 NF-EWO">EWO<br /><span class="normal noPadding">{{html ewo}}</span></div>
+		<div class="cell wid80 NF-EWO">Jur<br /><span class="normal noPadding">{{html jur}}</span></div>
+        <div class="cell wid120">Job Issue Description<br /><span class="normal noPadding">{{html desc}}</span></div>
+        <div class="cell wid90">Priority<br /><span class="normal noPadding">{{html priority}}</span></div> 
+        <div class="cell wid110">Status<br /><span class="normal noPadding">{{html status}}</span></div> 
+		<input type='hidden' class='issueId' value={{html issueId}}>
+		<input type='hidden' class='tabId' value={{html tabId}}>
+        </div>
+    </div>
+</div>
+</div>
+
+</script>

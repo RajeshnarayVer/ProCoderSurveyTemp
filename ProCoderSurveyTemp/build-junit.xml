@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<project name="JunitTest" default="all" basedir=".">
+  
+<property name="testdir" location="src/com/verizon/pcs/webservice" />
+<property name="jardir" location="WebContent" />
+<property name="target.dir" value="target"/>
+<property name="report.dir" value="report"/>
+   
+   <property name="full-compile" value="true" />
+
+<path id="classpath.test">
+ 
+  <pathelement location="${jardir}/WEB-INF/lib/hamcrest-all-1.3.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-container-servlet.jar" />
+  <pathelement location="${jardir}/WEB-INF/lib/jersey-container-servlet-core.jar" />
+  <pathelement location="${jardir}/WEB-INF/lib/jersey-media-jaxb.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/javax.ws.rs-api-2.0.1" />
+	<pathelement location="${jardir}/WEB-INF/lib/javax.annotation-api-1.2.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/javax.inject-2.4.0-b06.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/javax.servlet-api-3.0.1.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jaxb-api-2.2.7.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-client.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-server.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jsp-api.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/junit-4.12.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-common.jar" />
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-guava-2.12.jar" />
+	
+	<pathelement location="${jardir}/WEB-INF/lib/hk2-api-2.4.0-b06.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/hk2-locator-2.4.0-b06.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/hk2-utils-2.4.0-b06.jar"/>
+	
+	<pathelement location="${jardir}/WEB-INF/lib/mysql-connector.jar"/>
+	
+  <pathelement location="${testdir}" />
+  <pathelement location="${target.dir}" />
+  <pathelement location="${report.dir}" />
+  <pathelement location="${testdir}/${tmp}/${target.dir}/classes"/>
+
+</path>
+
+
+   <target name="clean" >
+  <delete verbose="${full-compile}">
+ <fileset dir="${testdir}" includes="**/*.class" />
+  </delete>
+   </target>
+
+<target name="compile" depends="clean">
+	
+	 <mkdir dir="${testdir}/${tmp}/${target.dir}" />
+	      <mkdir dir="${testdir}/${tmp}/${target.dir}/classes" />
+	      <mkdir dir="${testdir}/${report.dir}" />
+  <javac includeantruntime="false" srcdir="${testdir}" destdir="${testdir}/${tmp}/${target.dir}/classes"  failonerror="true" 
+ verbose="${full-compile}">
+
+ <classpath refid="classpath.test"/>
+  </javac>
+
+   </target>
+   <target name="test" depends="compile">
+
+<junit haltonfailure="false" printsummary="true">
+  
+     <classpath>
+        <path refid="classpath.test"/>
+ </classpath>
+<formatter type="plain" usefile="false" />
+      	 <formatter type="xml" />
+      	            <batchtest todir="${testdir}/${report.dir}">
+      	            	<path refid="classpath.test"/>
+      	                <fileset dir="${testdir}/${tmp}/${target.dir}/classes">
+      	                    <include name="**/HelloTest.class" />
+      	               </fileset>
+      	            </batchtest>
+	<test name="HelloTest" />
+  </junit>
+<junitreport todir="${testdir}/${report.dir}">
+   	   	   	  <fileset dir="${testdir}/${report.dir}">
+   	   	   	    <include name="TEST-*.xml"/>
+   	   	   	  </fileset>
+   	   	   	  <report format="frames" todir="${testdir}/${report.dir}"/>
+</junitreport>
+   </target>
+   
+	<target name="all" depends="test" />
+</project>
