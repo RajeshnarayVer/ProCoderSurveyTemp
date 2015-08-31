@@ -133,6 +133,7 @@ public class HelloTest {
 	 *
 	 * @generatedBy CodePro at 8/28/15 2:23 AM
 	 */
+	/*
 	@org.junit.Test
 	public void testSiteSurvey_1()
 		throws Exception {
@@ -148,7 +149,7 @@ public class HelloTest {
 		assertEquals("<?xml version=\"1.0\"?><hello> Hello Jersey</hello>", result);
 	}
 
-
+*/
 	/**
 	 * Perform pre-test initialization.
 	 *
