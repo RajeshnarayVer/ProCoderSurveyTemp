@@ -21,6 +21,7 @@
 
 <%@include file="surveyListTpl.jsp" %>
 
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/proCode.js"></script>
 <script type="text/javascript" src="../js/iscroll.js"></script>
@@ -44,37 +45,7 @@
 
 <![endif]-->
 <style>
-#vexp_col{
-  background: none repeat scroll 0 0 black;
-  height: 38px;
-}
 
-#vexp_col img{
-margin-left:10px;
-margin-top: 3px;
-border-right: 1px solid red;
-display:block;
-float:left;
-}
-#vexp_col span.vbuild-bar
-{
-    color: red;
-    float: left;
-    font-size: 16px;
-    font-weight: bold;
-    padding-left: 39px;
-    padding-top: 9px;
-    text-align: center;
-}
-#vexp_col span.vbuild-bar span{color:#fff;}
-#vexp_col span.empName{
- color: lightBlue;
-    float: right;
-    font-size: 14px;
-    font-weight: bold;
-    margin-right: 18px;
-    padding-top: 9px;
-    }
 
 </style>
 
@@ -91,7 +62,7 @@ float:left;
     <!-- ### Start Primary Navigation ### -->
  
     <!-- ### End Primary Navigation ### --> 
-<div class="header1"><span>Favorites</span><span class="span2">My Task</span><span>Site Survey</span></div>
+<div class="header1"><span class="span1">Favorites</span><span class="span2">My Task</span><span class="span3 selected">Site Survey</span></div>
 <!--Start Expand/Collapse-->
  <div id="exp_col">  
     <div id="exp_col_bar">
@@ -207,7 +178,7 @@ border-radius: 10px;">
 							Remarks 
 						</div>
 						<div class="cell last rem bold " align="right">
-							<textarea name="rem " id="rem"  row="5" column="20"
+							<textarea name="rem " id="rem"  rows="5" cols="20"
 								class=" rem notes75" ></textarea>
 						</div>
 						</div>
@@ -217,7 +188,7 @@ border-radius: 10px;">
 						<div class="cell">
 							<div>
 							Please specify a file, or a set of files:<br><br>
-							<lable for="file-upload" class="custom-upload">Browse</lable>
+							<label for="file-upload" class="custom-upload">Browse</label>
 							<input type="file" name="files" id="files" accept="image/*" size="3" multiple value="10240">
 							<span id="fileList">
 							
@@ -249,7 +220,7 @@ border-radius: 10px;">
                 </div>
                
                <div class="content" id="survey-map-view">
-               	<%@ include file="onMaps.jsp" %>
+               	<div id="map" style="width: 500px; height: 400px;"></div>
                </div>
                
                <div class="content" id="survey-his-detail-page">

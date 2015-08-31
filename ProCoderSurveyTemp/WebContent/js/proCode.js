@@ -78,7 +78,7 @@ function switchTab(obj) {
 
 function getSurveyDetails(){
 	var req = "";
-	var viewUrl = "../xml/surveyList.xml";
+	var viewUrl = "surveyList.xml";
 	$.ajax({
 		type : 'POST',
 		url : viewUrl,
@@ -180,8 +180,9 @@ function submitSurvey(){
 }
 
 function getLocation(){
+	console.log("getlOcation");
 	  var geocoder;
-
+	  initialize();
 	  if (navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
 	} 
@@ -211,7 +212,7 @@ function getLocation(){
 	      console.log(results)
 	        if (results[1]) {
 	         //formatted address
-	         alert(results[0].formatted_address)
+	         //alert(results[0].formatted_address)
 	        //find country name
 	             for (var i=0; i<results[0].address_components.length; i++) {
 	            for (var b=0;b<results[0].address_components[i].types.length;b++) {
@@ -225,7 +226,7 @@ function getLocation(){
 	            }
 	        }
 	        //city data
-	        $('#address').text(city.short_name + " " + city.long_name);
+	        $('#cust-add').text(results[0].formatted_address+lat+" "+lng);
 
 
 	        } else {
@@ -236,4 +237,55 @@ function getLocation(){
 	      }
 	    });
 	  }
+}
+
+function plotMap(){
+	var locations = [
+	                 ['Irving', 32.872151699999996, -96.99609249999999, 4],
+	                 ['Plano', 33.061262, -96.7366254, 3],
+	                 ['Garland', 32.907854, -96.6057114, 2],
+	                 ['Grapevine', 32.936068, -97.072745, 1]
+	               ];
+
+	               var map = new google.maps.Map(document.getElementById('map'), {
+	                 zoom: 10,
+	                 center: new google.maps.LatLng(31.97, -96.08),
+	                 mapTypeId: google.maps.MapTypeId.ROADMAP
+	               });
+
+	               var infowindow = new google.maps.InfoWindow();
+
+	               var marker, i;
+
+	               for (i = 0; i < locations.length; i++) {  
+	                 marker = new google.maps.Marker({
+	                   position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+	                   map: map
+	                 });
+
+	                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	                   return function() {
+	                     infowindow.setContent(locations[i][0]);
+	                     infowindow.open(map, marker);
+	                   }
+	                 })(marker, i));
+	               }
+	               google.maps.event.addListenerOnce(map, 'idle', function(){
+	                   google.maps.event.trigger(map, 'resize');
+	                  // map.setCenter(location);
+	               });
+	               var x = document.getElementById("demo");
+
+	               function getLocation() {
+	                   if (navigator.geolocation) {
+	                       navigator.geolocation.getCurrentPosition(showPosition);
+	                   } else { 
+	                       //x.innerHTML = "Geolocation is not supported by this browser.";
+	                   }
+	               }
+
+	               function showPosition(position) {
+	                   //x.innerHTML = "Latitude: " + position.coords.latitude + 
+	                   //"<br>Longitude: " + position.coords.longitude;	
+	               }
 }
