@@ -9,7 +9,7 @@
    <property name="full-compile" value="true" />
 
 <path id="classpath.test">
- 
+ <!--
   <pathelement location="${jardir}/WEB-INF/lib/hamcrest-all-1.3.jar" />
 	<pathelement location="${jardir}/WEB-INF/lib/jersey-container-servlet.jar" />
   <pathelement location="${jardir}/WEB-INF/lib/jersey-container-servlet-core.jar" />
@@ -31,6 +31,19 @@
 	<pathelement location="${jardir}/WEB-INF/lib/hk2-utils-2.4.0-b06.jar"/>
 	
 	<pathelement location="${jardir}/WEB-INF/lib/mysql-connector.jar"/>
+	-->
+	
+	<pathelement location="${jardir}/WEB-INF/lib/hamcrest-all-1.3.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/hk2-api-2.4.0-b06.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/hk2-locator-2.4.0-b06.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/hk2-utils-2.4.0-b06.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/javax.inject-2.4.0-b06.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-client.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-common.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-guava-2.12.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/jersey-server.jar"/>
+	<pathelement location="${jardir}/WEB-INF/lib/junit-4.12.jar"/>
 	
   <pathelement location="${testdir}" />
   <pathelement location="${target.dir}" />
@@ -73,7 +86,7 @@
       	                    <include name="**/HelloTest.class" />
       	               </fileset>
       	            </batchtest>
-	<test name="HelloTest" />
+	<!--<test name="HelloTest" />-->
   </junit>
 <junitreport todir="${testdir}/${report.dir}">
    	   	   	  <fileset dir="${testdir}/${report.dir}">
