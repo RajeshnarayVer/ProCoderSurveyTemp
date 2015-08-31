@@ -6,12 +6,17 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.URI;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.SecurityContext;
 
+import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.internal.MapPropertiesDelegate;
 import org.glassfish.jersey.server.ContainerRequest;
 import org.junit.After;
 import org.junit.Before;
+
 
 /**
  * The class <code>HelloTest</code> contains tests for the class <code>{@link Hello}</code>.
@@ -31,16 +36,18 @@ public class HelloTest {
 	
 	
 	@org.junit.Test
-	public void createSurveySubmitTest()
+	public void testCustName_1()
 		throws Exception {
 		Hello fixture = new Hello();
-		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());
-		String reqXml = "<createReq><name>Cust1</name><address>New address</address><room>Room1</room><type>HICAPS</type>" + 
+		SiteSurveyClient ss = new SiteSurveyClient();
+		//fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());
+		String reqXml = "<createReq><name>Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1</name><address>New address</address><room>Room1</room><type>HICAPS</type>" + 
 	 			"<by>Tom</by><date>2015-08-28</date><rem>test</rem><attachlist><filename>File1.jpg</filename>" + 
 	 			"<filename>File2.jpg</filename><filename>File3.jpg</filename></attachlist></createReq>";
-
+		String result = ss.callProCoderService(reqXml);
+		assertEquals("Customer Name cannot be more than 100 characters", result);
 		//fixture.sayApplHello(reqXml);
-		fixture.sayHtmlHello();
+		//fixture.sayHtmlHello();
 
 		// add additional test code here
 	}
@@ -54,15 +61,50 @@ public class HelloTest {
 	 * @generatedBy CodePro at 8/28/15 2:23 AM
 	 */
 	@org.junit.Test
-	public void createSurveySubmitMandatoryTest()
+	public void testFileName_3()
 		throws Exception {
 		Hello fixture = new Hello();
-		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());
+		SiteSurveyClient ss = new SiteSurveyClient();
+		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());		
+		String reqXml = "<createReq><name>Cust1</name><address>New address</address><room>Room1</room><type>HICAPS</type>" + 
+	 			"<by>Tom</by><date>2015-08-28</date><rem>test</rem><attachlist><filename>File1.jpg</filename>" + 
+	 			"<filename>File2.jpg</filename>"
+	 			+ "<filename>FileFileust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1ust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1.jpg</filename>"
+	 			+ "</attachlist></createReq>";
+		String result = ss.callProCoderService(reqXml);
+		assertEquals("Filename cannot be bigger than 200 characters", result);
+	}
 
-		String result = fixture.sayHtmlHello();
+	
 
-		// add additional test code here
-		assertEquals("<html> <title>Hello Jersey</title><body><h1>Hello Jersey</body></h1></html> ", result);
+	@org.junit.Test
+	public void testFileName_1()
+		throws Exception {
+		Hello fixture = new Hello();
+		SiteSurveyClient ss = new SiteSurveyClient();
+		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());		
+		String reqXml = "<createReq><name>Cust1</name><address>New address</address><room>Room1</room><type>HICAPS</type>" + 
+	 			"<by>Tom</by><date>2015-08-28</date><rem>test</rem><attachlist><filename>FileFileust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1ust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1.jpg</filename>" + 
+	 			"<filename>File2.jpg</filename>"
+	 			+ "<filename>File3.jpg</filename>"
+	 			+ "</attachlist></createReq>";
+		String result = ss.callProCoderService(reqXml);
+		assertEquals("Filename cannot be bigger than 200 characters", result);
+	}
+	
+	@org.junit.Test
+	public void testFileName_2()
+		throws Exception {
+		Hello fixture = new Hello();
+		SiteSurveyClient ss = new SiteSurveyClient();
+		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());		
+		String reqXml = "<createReq><name>Cust1</name><address>New address</address><room>Room1</room><type>HICAPS</type>" + 
+	 			"<by>Tom</by><date>2015-08-28</date><rem>test</rem><attachlist><filename>File1.jpg</filename>" + 
+	 			"<filename>FileFileust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1ust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1Cust1.jpg</filename>"
+	 			+ "<filename>File3.jpg</filename>"
+	 			+ "</attachlist></createReq>";
+		String result = ss.callProCoderService(reqXml);
+		assertEquals("Filename cannot be bigger than 200 characters", result);
 	}
 
 	/**
@@ -73,15 +115,15 @@ public class HelloTest {
 	 * @generatedBy CodePro at 8/28/15 2:23 AM
 	 */
 	@org.junit.Test
-	public void createSurveySubmitExceptionTest()
+	public void testSayPlainTextHello_1()
 		throws Exception {
 		Hello fixture = new Hello();
 		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());
 
-		String result = fixture.sayPlainTextHello();
+		//String result = fixture.sayPlainTextHello();
 
 		// add additional test code here
-		assertEquals("Hello Jersey", result);
+		//assertEquals("Hello Jersey", result);
 	}
 
 	/**
@@ -92,14 +134,17 @@ public class HelloTest {
 	 * @generatedBy CodePro at 8/28/15 2:23 AM
 	 */
 	@org.junit.Test
-	public void createSurveySubmitFailureTest()
+	public void testSiteSurvey_1()
 		throws Exception {
 		Hello fixture = new Hello();
-		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());
-
-		String result = fixture.sayXMLHello();
-
-		// add additional test code here
+		SiteSurveyClient ss = new SiteSurveyClient();
+		fixture.request = new ContainerRequest(URI.create(""), URI.create(""), "", (SecurityContext) null, new MapPropertiesDelegate());		
+		String reqXml = "<createReq><name>SiteSurveyTest</name><address>New address</address><room>Room1</room><type>HICAPS</type>" + 
+	 			"<by>Tom</by><date>2015-08-28</date><rem>test</rem><attachlist><filename>File1.jpg</filename>" + 
+	 			"<filename>File2.jpg</filename>"
+	 			+ "<filename>File3.jpg</filename>"
+	 			+ "</attachlist></createReq>";
+		String result = ss.callProCoderService(reqXml);		
 		assertEquals("<?xml version=\"1.0\"?><hello> Hello Jersey</hello>", result);
 	}
 
@@ -115,6 +160,7 @@ public class HelloTest {
 	@Before
 	public void setUp()
 		throws Exception {
+		
 		// add additional set up code here
 	}
 
