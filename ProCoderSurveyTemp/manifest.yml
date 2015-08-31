@@ -1,6 +1,6 @@
 --- 
 applications: 
-- name: GDeploy  
+- name: ProCoderSurveySept  
   memory: 512M 
-  host: GDeploy 
-  path: dist/ProCoderSurvey.war 
+  host: ProCoderSurveySept 
+  path: dist/ProCoderSurveyTemp.war 
