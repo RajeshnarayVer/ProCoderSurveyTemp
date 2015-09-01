@@ -78,7 +78,7 @@ function switchTab(obj) {
 
 function getSurveyDetails(){
 	var req = "";
-	var viewUrl = "surveyList.xml";
+	var viewUrl = "../js/surveyList.xml";
 	$.ajax({
 		type : 'POST',
 		url : viewUrl,
