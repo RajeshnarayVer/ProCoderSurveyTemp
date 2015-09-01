@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
 <meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
 
-<title>Site Survey</title>
+<title>Site Survey - Demo</title>
 <link href="../css/proCode.css" rel="stylesheet" type="text/css" />
 
 <!--[if IE]>
